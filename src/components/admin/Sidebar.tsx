@@ -79,7 +79,7 @@ export function Sidebar() {
 
       {/* User */}
       <div className="px-3 pt-4 border-t border-white/10 flex items-center gap-3">
-        <UserButton afterSignOutUrl="/" />
+        <UserButton />
         <span
           className="text-xs font-body"
           style={{ color: "#F5F0E8", opacity: 0.5 }}
