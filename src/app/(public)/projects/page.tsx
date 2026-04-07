@@ -18,7 +18,7 @@ export default async function ProjectsPage() {
       <div className="site-container">
         <p
           className="text-xs font-display font-semibold uppercase tracking-widest mb-3"
-          style={{ color: "#E8A020" }}
+          style={{ color: "#7C3AED" }}
         >
           Work
         </p>
