@@ -10,6 +10,7 @@ import {
   User,
   BookOpen,
   Mail,
+  SquareArrowOutUpRight,
 } from "lucide-react";
 
 const navItems = [
@@ -30,18 +31,32 @@ export function Sidebar() {
       style={{ backgroundColor: "#2C2C3A" }}
     >
       {/* Logo */}
-      <div className="px-3 mb-8">
+      <div className="px-3 mb-8 flex items-center justify-between">
+        <div className="flex items-center gap-1">
+          <span
+            className="font-display font-bold text-2xl tracking-tight"
+            style={{ color: "#E8A020" }}
+          >
+            FR
+          </span>
+          <span
+            className="text-xs font-body ml-2"
+            style={{ color: "#F5F0E8", opacity: 0.5 }}
+          >
+            Admin
+          </span>
+        </div>
         <span
-          className="font-display font-bold text-2xl tracking-tight"
-          style={{ color: "#E8A020" }}
-        >
-          FR
-        </span>
-        <span
-          className="text-xs font-body ml-2"
+          className="text-xs font-body"
           style={{ color: "#F5F0E8", opacity: 0.5 }}
         >
-          Admin Panel
+          <Link
+            href={"/"}
+            className="flex items-center gap-2 border px-1 py-0.5 rounded-md"
+          >
+            <SquareArrowOutUpRight size={18} />
+            Visit site
+          </Link>
         </span>
       </div>
 
