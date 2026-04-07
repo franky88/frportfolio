@@ -34,7 +34,7 @@ export default async function BlogPostPage({ params }: Props) {
             {p.tags?.[0] && (
               <span
                 className="text-xs font-display font-semibold uppercase tracking-widest"
-                style={{ color: "#E8A020" }}
+                style={{ color: "#7C3AED" }}
               >
                 {p.tags[0]}
               </span>

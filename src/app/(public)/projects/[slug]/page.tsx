@@ -33,7 +33,7 @@ export default async function ProjectPage({ params }: Props) {
         <div className="max-w-3xl mb-10">
           <p
             className="text-xs font-display font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "#E8A020" }}
+            style={{ color: "#7C3AED" }}
           >
             {p.category === "graphic-design"
               ? "Graphic Design"
@@ -60,7 +60,10 @@ export default async function ProjectPage({ params }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-display font-semibold transition-colors"
-                style={{ backgroundColor: "#E8A020", color: "#0A0A0A" }}
+                style={{
+                  backgroundColor: "#7C3AED",
+                  color: "#ffffff",
+                }}
               >
                 <ExternalLink size={14} />
                 View live
@@ -100,7 +103,7 @@ export default async function ProjectPage({ params }: Props) {
               <span
                 key={tag}
                 className="text-xs font-display font-semibold uppercase tracking-widest px-3 py-1 rounded-full"
-                style={{ backgroundColor: "#E8A02020", color: "#E8A020" }}
+                style={{ backgroundColor: "#7C3AED20", color: "#7C3AED" }}
               >
                 {tag}
               </span>
