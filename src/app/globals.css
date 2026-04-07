@@ -2,17 +2,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-obsidian: #0a0a0a;
-  --color-amber: #e8a020;
-  --color-amber-deep: #c47b00;
-  --color-bone: #f5f0e8;
-  --color-slate: #2c2c3a;
-  --color-slate-mid: #5a5a6a;
-  --color-rule: #e8e4dc;
+  /* Saasify color system */
+  --color-obsidian: #0f0a1e;
+  --color-amber: #7c3aed;
+  --color-amber-deep: #6d28d9;
+  --color-bone: #eeeaf6;
+  --color-slate: #1a1033;
+  --color-slate-mid: #6b7280;
+  --color-rule: #e5e0f0;
   --color-danger: #ef4444;
   --color-success: #22c55e;
   --color-warning: #f59e0b;
-  --color-info: #3b82f6;
+  --color-info: #06b6d4;
+
+  /* Gradient accent */
+  --color-gradient-from: #8b5cf6;
+  --color-gradient-to: #06b6d4;
 
   --font-display: "Barlow", sans-serif;
   --font-body: "DM Sans", sans-serif;
@@ -54,62 +59,62 @@
 /* ── Dark mode (default) ── */
 :root,
 .dark {
-  --color-bg-primary: #0a0a0a;
-  --color-bg-secondary: #2c2c3a;
-  --color-bg-surface: #f5f0e810;
-  --color-bg-card: #111111;
-  --color-text-primary: #f5f0e8;
-  --color-text-muted: #f5f0e899;
-  --color-text-nav: #f5f0e8cc;
+  --color-bg-primary: #0f0a1e;
+  --color-bg-secondary: #1a1033;
+  --color-bg-surface: #eeeaf610;
+  --color-bg-card: #160d2e;
+  --color-text-primary: #eeeaf6;
+  --color-text-muted: #eeeaf699;
+  --color-text-nav: #eeeaf6cc;
   --color-border: rgba(255, 255, 255, 0.06);
-  --color-navbar-bg: #0a0a0a;
-  --color-hero-bg: #0a0a0a;
-  --color-about-bg: #f5f0e8;
-  --color-about-text: #0a0a0a;
-  --color-about-muted: #5a5a6a;
-  --color-skills-bg: #2c2c3a;
-  --color-blog-bg: #0a0a0a;
-  --color-blog-card: #111111;
-  --color-blog-heading: #f5f0e8;
-  --color-blog-muted: #5a5a6a;
-  --color-contact-bg: #0a0a0a;
-  --color-contact-label: rgba(245, 240, 232, 0.6);
+  --color-navbar-bg: #0f0a1e;
+  --color-hero-bg: #0f0a1e;
+  --color-about-bg: #eeeaf6;
+  --color-about-text: #1a1033;
+  --color-about-muted: #6b7280;
+  --color-skills-bg: #1a1033;
+  --color-blog-bg: #0f0a1e;
+  --color-blog-card: #160d2e;
+  --color-blog-heading: #eeeaf6;
+  --color-blog-muted: #6b7280;
+  --color-contact-bg: #0f0a1e;
+  --color-contact-label: rgba(238, 234, 246, 0.6);
   --color-contact-input-bg: transparent;
-  --color-contact-input-text: #f5f0e8;
+  --color-contact-input-text: #eeeaf6;
   --color-contact-input-border: rgba(255, 255, 255, 0.15);
-  --color-contact-placeholder: rgba(245, 240, 232, 0.3);
-  --color-contact-success-text: #f5f0e8;
-  --color-footer-bg: #0a0a0a;
+  --color-contact-placeholder: rgba(238, 234, 246, 0.3);
+  --color-contact-success-text: #eeeaf6;
+  --color-footer-bg: #0f0a1e;
 }
 
 /* ── Light mode ── */
 .light {
-  --color-bg-primary: #f5f0e8;
-  --color-bg-secondary: #e8e4dc;
-  --color-bg-surface: #0a0a0a08;
+  --color-bg-primary: #eeeaf6;
+  --color-bg-secondary: #e5e0f0;
+  --color-bg-surface: #1a103308;
   --color-bg-card: #ffffff;
-  --color-text-primary: #0a0a0a;
-  --color-text-muted: #0a0a0a99;
-  --color-text-nav: #0a0a0acc;
+  --color-text-primary: #1a1033;
+  --color-text-muted: #1a103399;
+  --color-text-nav: #1a1033cc;
   --color-border: rgba(0, 0, 0, 0.06);
-  --color-navbar-bg: #f5f0e8;
-  --color-hero-bg: #f5f0e8;
-  --color-about-bg: #0a0a0a;
-  --color-about-text: #f5f0e8;
-  --color-about-muted: #f5f0e8aa;
-  --color-skills-bg: #e8e4dc;
-  --color-blog-bg: #f5f0e8;
+  --color-navbar-bg: #eeeaf6;
+  --color-hero-bg: #eeeaf6;
+  --color-about-bg: #1a1033;
+  --color-about-text: #eeeaf6;
+  --color-about-muted: #eeeaf6aa;
+  --color-skills-bg: #e5e0f0;
+  --color-blog-bg: #eeeaf6;
   --color-blog-card: #ffffff;
-  --color-blog-heading: #0a0a0a;
-  --color-blog-muted: #0a0a0aa8;
-  --color-contact-bg: #f5f0e8;
-  --color-contact-label: rgba(10, 10, 10, 0.6);
+  --color-blog-heading: #1a1033;
+  --color-blog-muted: #1a1033a8;
+  --color-contact-bg: #eeeaf6;
+  --color-contact-label: rgba(26, 16, 51, 0.6);
   --color-contact-input-bg: rgba(255, 255, 255, 0.6);
-  --color-contact-input-text: #0a0a0a;
+  --color-contact-input-text: #1a1033;
   --color-contact-input-border: rgba(0, 0, 0, 0.15);
-  --color-contact-placeholder: rgba(10, 10, 10, 0.3);
-  --color-contact-success-text: #0a0a0a;
-  --color-footer-bg: #f5f0e8;
+  --color-contact-placeholder: rgba(26, 16, 51, 0.3);
+  --color-contact-success-text: #1a1033;
+  --color-footer-bg: #eeeaf6;
 }
 
 @layer base {
@@ -152,8 +157,13 @@
   }
 
   ::selection {
-    background-color: var(--color-amber);
-    color: var(--color-obsidian);
+    background-color: #7c3aed;
+    color: #eeeaf6;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-contact-placeholder);
   }
 }
 
@@ -184,21 +194,42 @@
   .max-w-content {
     max-width: 800px;
   }
+
   .text-accent {
-    color: var(--color-amber);
+    color: #7c3aed;
   }
+
   .border-theme {
     border-color: var(--color-border);
   }
+
+  /* Purple gradient utility — use on headline spans */
+  .text-gradient {
+    background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient button */
+  .btn-gradient {
+    background: linear-gradient(90deg, #7c3aed, #06b6d4);
+    color: #ffffff;
+    border: none;
+  }
+
+  .btn-gradient:hover {
+    background: linear-gradient(90deg, #6d28d9, #0891b2);
+  }
 }
 
-/* Admin editor content */
+/* Admin editor — Tiptap */
 .tiptap-content .ProseMirror {
   outline: none;
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.75;
-  color: #f5f0e8;
+  color: #eeeaf6;
 }
 .tiptap-content .ProseMirror h2 {
   font-family: var(--font-display);
@@ -224,13 +255,13 @@
   margin-bottom: 0.25rem;
 }
 .tiptap-content .ProseMirror blockquote {
-  border-left: 3px solid #e8a020;
+  border-left: 3px solid #7c3aed;
   padding-left: 1rem;
-  color: #5a5a6a;
+  color: #6b7280;
   margin: 1rem 0;
 }
 .tiptap-content .ProseMirror pre {
-  background: #2c2c3a;
+  background: #1a1033;
   border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
@@ -238,7 +269,7 @@
   font-size: 0.875rem;
 }
 .tiptap-content .ProseMirror a {
-  color: #e8a020;
+  color: #7c3aed;
   text-decoration: underline;
 }
 .tiptap-content .ProseMirror img {
@@ -248,18 +279,17 @@
 }
 .tiptap-content .ProseMirror p.is-editor-empty:first-child::before {
   content: attr(data-placeholder);
-  color: #5a5a6a;
+  color: #6b7280;
   pointer-events: none;
   float: left;
   height: 0;
 }
 
-/* Public blog/project page — reuse same prose rules with light bg adjustments */
+/* Public blog/project prose */
 .prose-fr {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.75;
-  color: #2c2c3a;
 }
 .prose-fr h2 {
   font-family: var(--font-display);
@@ -267,7 +297,6 @@
   font-weight: 700;
   margin: 1.5rem 0 0.75rem;
   color: var(--color-blog-heading);
-  opacity: 0.8;
 }
 .prose-fr h3 {
   font-family: var(--font-display);
@@ -275,12 +304,11 @@
   font-weight: 600;
   margin: 1.25rem 0 0.5rem;
   color: var(--color-blog-heading);
-  opacity: 0.8;
 }
 .prose-fr p {
   margin-bottom: 1rem;
   color: var(--color-text-primary);
-  opacity: 0.5;
+  opacity: 0.75;
 }
 .prose-fr ul,
 .prose-fr ol {
@@ -288,21 +316,21 @@
   margin-bottom: 1rem;
 }
 .prose-fr blockquote {
-  border-left: 3px solid #e8a020;
+  border-left: 3px solid #7c3aed;
   padding-left: 1rem;
-  color: #5a5a6a;
+  color: #6b7280;
   margin: 1rem 0;
 }
 .prose-fr pre {
-  background: #0a0a0a;
-  color: #f5f0e8;
+  background: #0f0a1e;
+  color: #eeeaf6;
   border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
   font-family: var(--font-mono);
 }
 .prose-fr a {
-  color: #e8a020;
+  color: #7c3aed;
   text-decoration: underline;
 }
 .prose-fr img {
