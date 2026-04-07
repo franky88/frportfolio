@@ -1,12 +1,13 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { IProject } from "@/types";
 import { ImageUpload } from "./ImageUpload";
+import { RichTextEditor } from "./RichTextEditor";
 
 const schema = z.object({
   title: z.string().min(3, "Title must be at least 3 characters"),
@@ -38,6 +39,7 @@ export function ProjectForm({ project }: { project?: IProject }) {
     handleSubmit,
     setValue,
     watch,
+    control,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -137,11 +139,16 @@ export function ProjectForm({ project }: { project?: IProject }) {
           Content{" "}
           <span style={{ opacity: 0.5 }}>(optional — full case study)</span>
         </label>
-        <textarea
-          className={inputClass}
-          rows={8}
-          placeholder="Full case study content (HTML or Markdown)"
-          {...register("content")}
+        <Controller
+          name="content"
+          control={control}
+          render={({ field }) => (
+            <RichTextEditor
+              value={field.value ?? ""}
+              onChange={field.onChange}
+              placeholder="Write your content here…"
+            />
+          )}
         />
       </div>
 

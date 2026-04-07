@@ -1,12 +1,13 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { IBlogPost } from "@/types";
 import { ImageUpload } from "./ImageUpload";
+import { RichTextEditor } from "./RichTextEditor";
 
 const schema = z.object({
   title: z.string().min(3, "Title is required"),
@@ -34,6 +35,7 @@ export function BlogForm({ post }: { post?: IBlogPost }) {
     handleSubmit,
     setValue,
     watch,
+    control,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -118,11 +120,16 @@ export function BlogForm({ post }: { post?: IBlogPost }) {
         <label className={labelClass} style={{ color: "#5A5A6A" }}>
           Content
         </label>
-        <textarea
-          className={inputClass}
-          rows={12}
-          placeholder="Full post content (HTML or Markdown)"
-          {...register("content")}
+        <Controller
+          name="content"
+          control={control}
+          render={({ field }) => (
+            <RichTextEditor
+              value={field.value ?? ""}
+              onChange={field.onChange}
+              placeholder="Write your content here…"
+            />
+          )}
         />
         {errors.content && (
           <p className="mt-1 text-xs text-danger">{errors.content.message}</p>

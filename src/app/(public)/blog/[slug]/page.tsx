@@ -12,7 +12,6 @@ export default async function BlogPostPage({ params }: Props) {
   await connectDB();
   const post = await BlogPost.findOne({ slug, published: true }).lean();
   if (!post) notFound();
-
   const p = JSON.parse(JSON.stringify(post));
 
   return (
@@ -24,7 +23,7 @@ export default async function BlogPostPage({ params }: Props) {
         <Link
           href="/blog"
           className="text-xs font-display font-semibold uppercase tracking-widest mb-8 inline-block"
-          style={{ color: "#0A0A0A", opacity: 0.4 }}
+          style={{ color: "var(--color-text-primary)", opacity: 0.5 }}
         >
           ← Back to articles
         </Link>
@@ -58,6 +57,7 @@ export default async function BlogPostPage({ params }: Props) {
           >
             {p.title}
           </h1>
+
           <p
             className="font-body text-lg leading-relaxed mb-10"
             style={{ color: "#5A5A6A" }}
@@ -76,9 +76,9 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           )}
 
+          {/* Content */}
           <div
-            className="prose max-w-none font-body"
-            style={{ color: "#5A5A6A" }}
+            className="prose-fr"
             dangerouslySetInnerHTML={{ __html: p.content }}
           />
         </div>

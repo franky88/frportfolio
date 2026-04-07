@@ -9,7 +9,7 @@ export function AboutSection({ about }: { about: IAbout | null }) {
     <section
       id="about"
       className="py-20"
-      style={{ backgroundColor: "#F5F0E8" }}
+      style={{ backgroundColor: "var(--color-bg-primary)" }}
     >
       <div className="site-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -35,14 +35,14 @@ export function AboutSection({ about }: { about: IAbout | null }) {
             </p>
             <h2
               className="font-display font-bold text-4xl mb-6"
-              style={{ color: "#0A0A0A" }}
+              style={{ color: "var(--color-text-primary)" }}
             >
               {about.name}
             </h2>
             {about.tagline && (
               <p
                 className="font-display font-semibold text-lg mb-4"
-                style={{ color: "#2C2C3A" }}
+                style={{ color: "var(--color-text-primary)", opacity: 0.8 }}
               >
                 {about.tagline}
               </p>

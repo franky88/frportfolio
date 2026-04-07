@@ -109,13 +109,10 @@ export default async function ProjectPage({ params }: Props) {
         )}
 
         {/* Content */}
-        {p.content && (
-          <div
-            className="prose max-w-3xl font-body"
-            style={{ color: "var(--color-text-primary)", opacity: 0.85 }}
-            dangerouslySetInnerHTML={{ __html: p.content }}
-          />
-        )}
+        <div
+          className="prose-fr"
+          dangerouslySetInnerHTML={{ __html: p.content }}
+        />
       </div>
     </div>
   );

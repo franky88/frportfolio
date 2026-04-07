@@ -11,6 +11,12 @@
   "dependencies": {
     "@clerk/nextjs": "^7.0.8",
     "@hookform/resolvers": "^5.2.2",
+    "@tiptap/extension-image": "^3.22.2",
+    "@tiptap/extension-link": "^3.22.2",
+    "@tiptap/extension-placeholder": "^3.22.2",
+    "@tiptap/pm": "^3.22.2",
+    "@tiptap/react": "^3.22.2",
+    "@tiptap/starter-kit": "^3.22.2",
     "@types/mongoose": "^5.11.96",
     "class-variance-authority": "^0.7.1",
     "cloudinary": "^2.9.0",
