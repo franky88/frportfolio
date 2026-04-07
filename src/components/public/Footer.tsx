@@ -9,7 +9,7 @@ export function Footer() {
       <div className="site-container flex flex-col md:flex-row items-center justify-between gap-4">
         <span
           className="font-display font-bold text-xl"
-          style={{ color: "#E8A020" }}
+          style={{ color: "#7C3AED" }}
         >
           FR
         </span>
@@ -24,6 +24,7 @@ export function Footer() {
             { href: "/#projects", label: "Projects" },
             { href: "/blog", label: "Blog" },
             { href: "/#contact", label: "Contact" },
+            { href: "/resume", label: "Resume" },
           ].map(({ href, label }) => (
             <Link
               key={href}

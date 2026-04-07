@@ -11,6 +11,7 @@ import {
   BookOpen,
   Mail,
   SquareArrowOutUpRight,
+  FileText,
 } from "lucide-react";
 
 const navItems = [
@@ -20,6 +21,7 @@ const navItems = [
   { href: "/admin/about", label: "About", icon: User },
   { href: "/admin/blog", label: "Blog", icon: BookOpen },
   { href: "/admin/messages", label: "Messages", icon: Mail },
+  { href: "/admin/resume", label: "Resume", icon: FileText },
 ];
 
 export function Sidebar() {

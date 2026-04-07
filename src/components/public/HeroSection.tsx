@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import type { IAbout } from "@/types";
+import { stagger, fadeUp } from "./animations";
 
 export function HeroSection({ about }: { about: IAbout | null }) {
   const headline =
@@ -8,10 +12,9 @@ export function HeroSection({ about }: { about: IAbout | null }) {
     about?.heroSubtitle ??
     "Graphic Designer & Web Developer — building things that look considered and function beautifully.";
 
-  // Highlight the last word of the headline in amber
   const words = headline.split(" ");
   const lastWord = words.pop();
-  const restWords = words.join(" ");
+  const rest = words.join(" ");
 
   return (
     <section
@@ -19,40 +22,47 @@ export function HeroSection({ about }: { about: IAbout | null }) {
       style={{ backgroundColor: "var(--color-hero-bg)" }}
     >
       <div className="site-container py-20">
-        <div className="max-w-4xl">
+        <motion.div
+          className="max-w-4xl"
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
+        >
           {/* Eyebrow */}
-          <p
+          <motion.p
+            variants={fadeUp}
             className="text-xs font-display font-semibold uppercase tracking-widest mb-6"
-            style={{ color: "#E8A020" }}
+            style={{ color: "#7C3AED" }}
           >
-            FR · {about?.tagline}
-          </p>
+            FR · Graphic Designer & Web Developer
+          </motion.p>
 
           {/* Headline */}
-          <h1
+          <motion.h1
+            variants={fadeUp}
             className="font-display font-bold leading-tight mb-6"
             style={{
               fontSize: "clamp(2.5rem, 6vw, 3.5rem)",
               color: "var(--color-text-primary)",
             }}
           >
-            {restWords} <span style={{ color: "#E8A020" }}>{lastWord}</span>
-          </h1>
+            {rest} <span className="text-gradient">{lastWord}</span>
+          </motion.h1>
 
           {/* Subtitle */}
-          <p
+          <motion.p
+            variants={fadeUp}
             className="font-body text-lg max-w-2xl mb-10 leading-relaxed"
-            style={{ color: "var(--color-text-primary)", opacity: 0.6 }}
+            style={{ color: "var(--color-text-muted)" }}
           >
             {subtitle}
-          </p>
+          </motion.p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap gap-4">
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
             <Link
               href="/#projects"
-              className="px-6 py-3 rounded-md text-sm font-display font-semibold transition-colors"
-              style={{ backgroundColor: "#E8A020", color: "#0A0A0A" }}
+              className="px-6 py-3 rounded-md text-sm font-display font-semibold transition-colors btn-gradient"
             >
               View projects
             </Link>
@@ -66,8 +76,8 @@ export function HeroSection({ about }: { about: IAbout | null }) {
             >
               Get in touch
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,22 +1,32 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { format } from "date-fns";
 import type { IBlogPost } from "@/types";
 
 export function BlogCard({ post }: { post: IBlogPost }) {
   return (
-    <article
-      className="group rounded-xl overflow-hidden border border-theme transition-transform duration-200 hover:-translate-y-0.5"
+    <motion.article
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="group rounded-xl overflow-hidden border border-theme"
       style={{ backgroundColor: "var(--color-blog-card)" }}
     >
       {post.coverImage && (
         <div className="relative aspect-video overflow-hidden">
-          <Image
-            src={post.coverImage}
-            alt={post.title}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-          />
+          <motion.div
+            className="w-full h-full"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.4 }}
+          >
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              className="object-cover"
+            />
+          </motion.div>
         </div>
       )}
       <div className="p-5">
@@ -24,7 +34,7 @@ export function BlogCard({ post }: { post: IBlogPost }) {
           {post.tags?.[0] && (
             <span
               className="text-xs font-display font-semibold uppercase tracking-widest"
-              style={{ color: "#E8A020" }}
+              style={{ color: "#7C3AED" }}
             >
               {post.tags[0]}
             </span>
@@ -61,11 +71,11 @@ export function BlogCard({ post }: { post: IBlogPost }) {
         <Link
           href={`/blog/${post.slug}`}
           className="text-sm font-display font-semibold transition-colors group-hover:underline"
-          style={{ color: "#E8A020" }}
+          style={{ color: "#7C3AED" }}
         >
           Read more →
         </Link>
       </div>
-    </article>
+    </motion.article>
   );
 }

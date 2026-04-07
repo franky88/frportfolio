@@ -338,3 +338,50 @@
   border-radius: 8px;
   margin: 1rem 0;
 }
+
+@media print {
+  @page {
+    size: legal portrait;
+    margin: 0.75in 0.75in 0.75in 0.75in;
+  }
+  /* Hide nav, footer, and the download button */
+  header,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+  }
+
+  /* Reset padding for print */
+  .site-container {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .pt-24 {
+    padding-top: 0 !important;
+  }
+
+  /* Force black text for ATS readability */
+  * {
+    color: #000000 !important;
+    background: transparent !important;
+    border-color: #cccccc !important;
+    -webkit-text-fill-color: #000000 !important;
+  }
+
+  /* Prevent page breaks mid-entry */
+  section,
+  div {
+    page-break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+}

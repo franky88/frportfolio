@@ -69,3 +69,40 @@ export interface IAbout {
   heroHeadline?: string;
   heroSubtitle?: string;
 }
+
+export interface IResumeExperience {
+  company: string;
+  role: string;
+  startDate: string;
+  endDate?: string;
+  current: boolean;
+  bullets: string[];
+}
+
+export interface IResumeEducation {
+  institution: string;
+  degree: string;
+  year: string;
+}
+
+export interface IResumeSection {
+  label: string;
+  items: string[];
+}
+
+export interface IResume {
+  _id: string;
+  name: string;
+  title: string;
+  email?: string;
+  phone?: string;
+  location?: string;
+  website?: string;
+  linkedin?: string;
+  summary: string;
+  experience: IResumeExperience[];
+  education: IResumeEducation[];
+  skills: IResumeSection[];
+  published: boolean;
+  updatedAt: string;
+}

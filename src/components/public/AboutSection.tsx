@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { IAbout } from "@/types";
 import { MapPin, Mail } from "lucide-react";
+import { ScrollReveal } from "./ScrollReveal";
 
 export function AboutSection({ about }: { about: IAbout | null }) {
   if (!about) return null;
@@ -26,75 +27,77 @@ export function AboutSection({ about }: { about: IAbout | null }) {
           )}
 
           {/* Content */}
-          <div>
-            <p
-              className="text-xs font-display font-semibold uppercase tracking-widest mb-4"
-              style={{ color: "#E8A020" }}
-            >
-              About
-            </p>
-            <h2
-              className="font-display font-bold text-4xl mb-6"
-              style={{ color: "var(--color-text-primary)" }}
-            >
-              {about.name}
-            </h2>
-            {about.tagline && (
+          <ScrollReveal delay={0.1}>
+            <div>
               <p
-                className="font-display font-semibold text-lg mb-4"
-                style={{ color: "var(--color-text-primary)", opacity: 0.8 }}
+                className="text-xs font-display font-semibold uppercase tracking-widest mb-4"
+                style={{ color: "#7C3AED" }}
               >
-                {about.tagline}
+                About
               </p>
-            )}
-            <p
-              className="font-body text-md leading-relaxed mb-6 whitespace-pre-line"
-              style={{ color: "#5A5A6A" }}
-            >
-              {about.bio}
-            </p>
-
-            <div className="flex flex-col gap-2 mb-6">
-              {about.location && (
-                <div
-                  className="flex items-center gap-2 text-sm font-body"
-                  style={{ color: "#5A5A6A" }}
+              <h2
+                className="font-display font-bold text-4xl mb-6"
+                style={{ color: "var(--color-text-primary)" }}
+              >
+                {about.name}
+              </h2>
+              {about.tagline && (
+                <p
+                  className="font-display font-semibold text-lg mb-4"
+                  style={{ color: "var(--color-text-primary)", opacity: 0.8 }}
                 >
-                  <MapPin size={14} style={{ color: "#E8A020" }} />
-                  {about.location}
-                </div>
+                  {about.tagline}
+                </p>
               )}
-              {about.email && (
-                <div
-                  className="flex items-center gap-2 text-sm font-body"
-                  style={{ color: "#5A5A6A" }}
-                >
-                  <Mail size={14} style={{ color: "#E8A020" }} />
-                  {about.email}
+              <p
+                className="font-body text-md leading-relaxed mb-6 whitespace-pre-line"
+                style={{ color: "#5A5A6A" }}
+              >
+                {about.bio}
+              </p>
+
+              <div className="flex flex-col gap-2 mb-6">
+                {about.location && (
+                  <div
+                    className="flex items-center gap-2 text-sm font-body"
+                    style={{ color: "#5A5A6A" }}
+                  >
+                    <MapPin size={14} style={{ color: "#7C3AED" }} />
+                    {about.location}
+                  </div>
+                )}
+                {about.email && (
+                  <div
+                    className="flex items-center gap-2 text-sm font-body"
+                    style={{ color: "#5A5A6A" }}
+                  >
+                    <Mail size={14} style={{ color: "#7C3AED" }} />
+                    {about.email}
+                  </div>
+                )}
+              </div>
+
+              {/* Social links */}
+              {about.socialLinks && (
+                <div className="flex gap-4">
+                  {Object.entries(about.socialLinks)
+                    .filter(([, url]) => url)
+                    .map(([platform, url]) => (
+                      <a
+                        key={platform}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-display font-semibold uppercase tracking-widest transition-colors text-[#7C3AED] hover:text-amber-deep"
+                        // style={{ color: "#2C2C3A" }}
+                      >
+                        {platform}
+                      </a>
+                    ))}
                 </div>
               )}
             </div>
-
-            {/* Social links */}
-            {about.socialLinks && (
-              <div className="flex gap-4">
-                {Object.entries(about.socialLinks)
-                  .filter(([, url]) => url)
-                  .map(([platform, url]) => (
-                    <a
-                      key={platform}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-display font-semibold uppercase tracking-widest transition-colors hover:text-amber"
-                      style={{ color: "#2C2C3A" }}
-                    >
-                      {platform}
-                    </a>
-                  ))}
-              </div>
-            )}
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
