@@ -1,6 +1,7 @@
 import { connectDB } from "@/lib/mongodb";
 import { Project } from "@/models/Project";
 import { ProjectCard } from "@/components/public/ProjectCard";
+import { IProject } from "@/types";
 
 export default async function ProjectsPage() {
   await connectDB();
@@ -29,9 +30,15 @@ export default async function ProjectsPage() {
           All projects
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {JSON.parse(JSON.stringify(projects)).map((project: any) => (
-            <ProjectCard key={project._id} project={project} />
-          ))}
+          {JSON.parse(JSON.stringify(projects)).map(
+            (project: IProject, index: number) => (
+              <ProjectCard
+                key={project._id}
+                project={project}
+                isPriority={index === 0}
+              />
+            ),
+          )}
         </div>
       </div>
     </div>

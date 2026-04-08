@@ -11,6 +11,8 @@ export default async function ResumePage() {
 
   const r: IResume = JSON.parse(JSON.stringify(resume));
 
+  console.log("resume", r);
+
   return (
     <div
       className="pt-24 pb-20"
@@ -38,7 +40,7 @@ export default async function ResumePage() {
               <ResumeDownload name={r.name} />
             </div>
             <div
-              className="flex flex-wrap gap-4 text-xs font-body"
+              className="flex flex-wrap gap-3 text-xs font-body"
               style={{ color: "var(--color-text-muted)" }}
             >
               {r.email && <a href={`mailto: ${r.email}`}>{r.email}</a>}

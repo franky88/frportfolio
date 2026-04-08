@@ -6,7 +6,13 @@ import { motion } from "framer-motion";
 import { format } from "date-fns";
 import type { IBlogPost } from "@/types";
 
-export function BlogCard({ post }: { post: IBlogPost }) {
+export function BlogCard({
+  post,
+  isPriority = false,
+}: {
+  post: IBlogPost;
+  isPriority?: boolean;
+}) {
   return (
     <motion.article
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
@@ -16,7 +22,7 @@ export function BlogCard({ post }: { post: IBlogPost }) {
       {post.coverImage && (
         <div className="relative aspect-video overflow-hidden">
           <motion.div
-            className="w-full h-full"
+            className="w-full h-full relative"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
           >
@@ -25,6 +31,8 @@ export function BlogCard({ post }: { post: IBlogPost }) {
               alt={post.title}
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={isPriority}
             />
           </motion.div>
         </div>

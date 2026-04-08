@@ -5,7 +5,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import type { IProject } from "@/types";
 
-export function ProjectCard({ project }: { project: IProject }) {
+export function ProjectCard({
+  project,
+  isPriority = false,
+}: {
+  project: IProject;
+  isPriority?: boolean;
+}) {
   const categoryLabel =
     project.category === "graphic-design"
       ? "Graphic Design"
@@ -20,7 +26,7 @@ export function ProjectCard({ project }: { project: IProject }) {
       <div className="relative aspect-video overflow-hidden">
         {project.coverImage ? (
           <motion.div
-            className="w-full h-full"
+            className="w-full h-full relative"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.4 }}
           >
@@ -29,6 +35,8 @@ export function ProjectCard({ project }: { project: IProject }) {
               alt={project.title}
               fill
               className="object-cover"
+              priority={isPriority}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </motion.div>
         ) : (

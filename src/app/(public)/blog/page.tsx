@@ -1,6 +1,7 @@
 import { connectDB } from "@/lib/mongodb";
 import { BlogPost } from "@/models/BlogPost";
 import { BlogCard } from "@/components/public/BlogCard";
+import { IBlogPost } from "@/types";
 
 export default async function BlogPage() {
   await connectDB();
@@ -27,9 +28,11 @@ export default async function BlogPage() {
           Articles
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {JSON.parse(JSON.stringify(posts)).map((post: any) => (
-            <BlogCard key={post._id} post={post} />
-          ))}
+          {JSON.parse(JSON.stringify(posts)).map(
+            (post: IBlogPost, index: number) => (
+              <BlogCard key={post._id} post={post} isPriority={index === 0} />
+            ),
+          )}
         </div>
       </div>
     </div>

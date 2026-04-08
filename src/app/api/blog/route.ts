@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { connectDB } from "@/lib/mongodb";
 import { BlogPost } from "@/models/BlogPost";
 import slugify from "slugify";
+import { revalidatePath } from "next/cache";
 
 export async function GET() {
   await connectDB();
@@ -22,5 +23,9 @@ export async function POST(req: NextRequest) {
   const slug = slugify(body.title, { lower: true, strict: true });
   const publishedAt = body.published ? new Date() : undefined;
   const post = await BlogPost.create({ ...body, slug, publishedAt });
+
+  revalidatePath("/");
+  revalidatePath("/blog");
+
   return NextResponse.json(post, { status: 201 });
 }

@@ -14,5 +14,6 @@ export async function PUT(req: NextRequest, { params }: RouteContext) {
   await connectDB();
   const body = await req.json();
   const message = await Message.findByIdAndUpdate(id, body, { new: true });
+
   return NextResponse.json(message);
 }

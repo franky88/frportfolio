@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { connectDB } from "@/lib/mongodb";
 import { About } from "@/models/About";
+import { revalidatePath } from "next/cache";
 
 export async function GET() {
   await connectDB();
@@ -20,5 +21,9 @@ export async function PUT(req: NextRequest) {
     new: true,
     upsert: true,
   });
+
+  revalidatePath("/");
+  revalidatePath("/about");
+
   return NextResponse.json(about);
 }
