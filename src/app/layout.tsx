@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { PageTransition } from "@/components/public/PageTransition";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "FR — Graphic Designer & Web Developer",
@@ -29,14 +30,8 @@ export default function RootLayout({
           <ThemeProvider>
             <PageTransition>{children}</PageTransition>
           </ThemeProvider>
+          <Analytics />
         </body>
-
-        <script
-          src="https://platform.linkedin.com/badges/js/profile.js"
-          async
-          defer
-          type="text/javascript"
-        ></script>
       </html>
     </ClerkProvider>
   );

@@ -9,8 +9,6 @@ export default async function ProjectsPage() {
     .sort({ order: 1, createdAt: -1 })
     .lean();
 
-  console.log("projects", projects);
-
   return (
     <div
       className="pt-24 pb-20"
