@@ -3,15 +3,22 @@ import { Resume } from "@/models/Resume";
 import { notFound } from "next/navigation";
 import type { IResume } from "@/types";
 import { ResumeDownload } from "@/components/public/ResumeDownload";
+import { Project } from "@/models/Project";
 
 export default async function ResumePage() {
   await connectDB();
+
+  const projects = await Project.find({ published: true })
+    .sort({ order: 1, createdAt: -1 })
+    .lean();
+
   const resume = await Resume.findOne({ published: true }).lean();
   if (!resume) notFound();
 
   const r: IResume = JSON.parse(JSON.stringify(resume));
 
-  console.log("resume", r);
+  // console.log("resume", r);
+  console.log("projects", projects.filter((p) => p.featured !== false).length);
 
   return (
     <div
@@ -129,6 +136,82 @@ export default async function ResumePage() {
             </section>
           )}
 
+          {/* Skills */}
+          {r.skills?.length > 0 && (
+            <section className="mb-10">
+              <h2
+                className="text-xs font-display font-semibold uppercase tracking-widest mb-6"
+                style={{ color: "#7C3AED" }}
+              >
+                Skills
+              </h2>
+              <div className="space-y-4">
+                {r.skills.map((section, i) => (
+                  <div key={i}>
+                    <p
+                      className="text-xs font-display font-semibold uppercase tracking-widest mb-2"
+                      style={{ color: "var(--color-text-primary)" }}
+                    >
+                      {section.label}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {section.items.map((item, j) => (
+                        <span
+                          key={j}
+                          className="text-xs font-body"
+                          style={{ color: "var(--color-text-muted)" }}
+                        >
+                          {item},
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {projects.length > 0 && (
+            <section className="mb-10">
+              <h2
+                className="text-xs font-display font-semibold uppercase tracking-widest mb-6"
+                style={{ color: "#7C3AED" }}
+              >
+                Projects
+              </h2>
+              <div className="space-y-4">
+                {projects
+                  .filter((p) => p.featured !== false)
+                  .map((project, i) => (
+                    <div key={i}>
+                      <p
+                        className="font-display font-bold text-sm"
+                        style={{ color: "var(--color-text-primary)" }}
+                      >
+                        {project.title}
+                      </p>
+
+                      <p
+                        className="font-body text-sm"
+                        style={{ color: "var(--color-text-muted)" }}
+                      >
+                        {project.description}
+                      </p>
+                      <a
+                        href={`${project.liveUrl}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-body"
+                        style={{ color: "var(--color-text-muted)" }}
+                      >
+                        Live URL
+                      </a>
+                    </div>
+                  ))}
+              </div>
+            </section>
+          )}
+
           {/* Education */}
           {r.education?.length > 0 && (
             <section className="mb-10">
@@ -161,41 +244,6 @@ export default async function ResumePage() {
                     >
                       {edu.year}
                     </span>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Skills */}
-          {r.skills?.length > 0 && (
-            <section className="mb-10">
-              <h2
-                className="text-xs font-display font-semibold uppercase tracking-widest mb-6"
-                style={{ color: "#7C3AED" }}
-              >
-                Skills
-              </h2>
-              <div className="space-y-4">
-                {r.skills.map((section, i) => (
-                  <div key={i}>
-                    <p
-                      className="text-xs font-display font-semibold uppercase tracking-widest mb-2"
-                      style={{ color: "var(--color-text-primary)" }}
-                    >
-                      {section.label}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {section.items.map((item, j) => (
-                        <span
-                          key={j}
-                          className="text-xs font-body px-3 py-1 rounded-full border border-theme"
-                          style={{ color: "var(--color-text-muted)" }}
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 ))}
               </div>
